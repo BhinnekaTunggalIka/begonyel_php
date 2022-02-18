@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $product = Product::all();
+        return view('product.index', compact('product'));
     }
 
     /**
@@ -24,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.create');
     }
 
     /**
@@ -35,7 +37,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request -> validate([
+            'name' => 'required|min:4',
+            'price' => 'required'
+        ],
+        [
+            'name.required' => 'Jangan lupa isi nama...',
+            'name.min' => 'Nama makanan minimal 4 huruf...',
+        ]);
+        Product :: create([
+            'name' => $request->name,
+            'price' => $request->price
+        ]);
+        return redirect('/product')->with('status', 'Data Berhasil Ditambahkan!');
     }
 
     /**

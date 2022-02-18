@@ -13,7 +13,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>ProductList</h3>
+                    <h3>Product List</h3>
                     <p class="text-subtitle text-muted">For user to check they list</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
@@ -73,16 +73,5 @@
 
         </section>
     </div>
-
-    <footer>
-        <div class="footer clearfix mb-0 text-muted">
-            <div class="float-start">
-                <p>2021 &copy; Mazer</p>
-            </div>
-            <div class="float-end">
-                <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a href="http://ahmadsaugi.com">A. Saugi</a></p>
-            </div>
-        </div>
-    </footer>
 </div>
 @endsesction
