@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\TableController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +20,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('/product', ProductController::class);
+Route::resource('/photo', PhotoController::class);
+Route::resource('/table', TableController::class);

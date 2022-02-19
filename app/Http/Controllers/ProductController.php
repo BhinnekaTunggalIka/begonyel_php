@@ -39,11 +39,11 @@ class ProductController extends Controller
     {
         $request -> validate([
             'name' => 'required|min:4',
-            'price' => 'required'
+            'price' => 'required|min:1'
         ],
         [
             'name.required' => 'Jangan lupa isi nama...',
-            'name.min' => 'Nama makanan minimal 4 huruf...',
+            'name.min' => 'Nama makanan minimal 4 huruf...'
         ]);
         Product :: create([
             'name' => $request->name,
@@ -71,7 +71,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('product/edit', compact('product'));
     }
 
     /**
@@ -83,7 +83,19 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request -> validate([
+            'name' => 'required|min:4',
+            'price' => 'required|min:1'
+        ],
+        [
+            'name.required' => 'Jangan lupa isi nama...',
+            'name.min' => 'Nama makanan minimal 4 huruf...'
+        ]);
+        Product::where('id',$product->id)->update([
+            'name' => $request->name,
+            'price' => $request->price,
+        ]);
+        return redirect('/product');
     }
 
     /**
@@ -94,6 +106,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        Product::destroy($product->id);
+        return redirect('/product')->with('delete', 'Data berhasil dihapus!');
     }
 }
