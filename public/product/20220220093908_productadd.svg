@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg31"
+   inkscape:version="1.1.2 (b8e25be8, 2022-02-05)"
+   sodipodi:docname="add.svg"
+   inkscape:export-filename="/Users/alifmuhammad/Desktop/Magang Wajib/Front-End/aplikasidatapengunjung/src/assets/add.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview33"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.49976852"
+     inkscape:cx="396.18342"
+     inkscape:cy="561.25984"
+     inkscape:window-width="1312"
+     inkscape:window-height="783"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs28" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       d="m 82.600001,147.70588 c 18.706039,0 33.866669,-15.16327 33.866669,-33.86667 0,-18.703389 -15.16063,-33.866659 -33.866669,-33.866659 -18.706041,0 -33.866666,15.16327 -33.866666,33.866659 0,18.7034 15.160625,33.86667 33.866666,33.86667 z m 13.41438,12.7 H 69.185627 c -25.31798,0 -45.852292,20.53167 -45.852292,45.85229 0,5.08 4.106333,9.18105 9.170458,9.18105 H 132.7015 c 5.06412,0 9.16516,-4.10105 9.16516,-9.18105 0,-25.32062 -20.53166,-45.85229 -45.852279,-45.85229 z m 90.302279,-27.51667 h -12.7 v -12.7 c 0,-3.4925 -2.83104,-6.35 -6.35,-6.35 -3.51896,0 -6.35,2.84427 -6.35,6.35 v 12.7 h -12.7 c -3.4925,0 -6.35,2.8575 -6.35,6.35 0,3.4925 2.84427,6.35 6.35,6.35 h 12.7 v 12.7 c 0,3.51896 2.8575,6.35 6.35,6.35 3.4925,0 6.35,-2.84427 6.35,-6.35 v -12.7 h 12.7 c 3.51896,0 6.35,-2.83104 6.35,-6.35 0,-3.51896 -2.83104,-6.35 -6.35,-6.35 z"
+       id="path35"
+       style="stroke-width:0.264583;fill:#ffffff"
+       inkscape:export-filename="/Users/alifmuhammad/path35.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+  </g>
+</svg>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Photo;
 use App\Models\Product;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
@@ -37,19 +38,37 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $request -> validate([
             'name' => 'required|min:4',
-            'price' => 'required|min:1'
+            'price' => 'required|min:1',
+            'photos' => 'required',
+            'photos.*' => 'image|mimes:jpeg,png,jpg,gif,svg,heic|max:2048'
         ],
         [
             'name.required' => 'Jangan lupa isi nama...',
-            'name.min' => 'Nama makanan minimal 4 huruf...'
+            'name.min' => 'Nama makanan minimal 4 huruf...',
+            'price.required' => 'Isi harga nya yaa..',
+            'photos.required' => 'masukin foto nya dong..',
+            'photos.image' => 'masukin foto bukan yang lain..',
+            'photos.mimes' => 'masukin foto bukan yang lain..',
+            'photos.max' => 'maksimal ukuran file 2MB..'
         ]);
-        Product :: create([
+        $product = Product :: create([
             'name' => $request->name,
             'price' => $request->price
         ]);
-        return redirect('/product')->with('status', 'Data Berhasil Ditambahkan!');
+
+        foreach($request->file('photos') as $photo){
+            $filename = date('YmdHis').'_product'.$photo->getClientOriginalName();
+            $photo->move(public_path('product'), $filename);
+            Photo::create([
+                'photo_name' => $filename,
+                'product_id' => $product->id
+            ]);
+        }
+
+        return redirect('/products')->with('status', 'Data Berhasil Ditambahkan!');
     }
 
     /**
@@ -71,7 +90,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('product/edit', compact('product'));
+        return view('product.edit', compact('product'));
     }
 
     /**
@@ -95,7 +114,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'price' => $request->price,
         ]);
-        return redirect('/product');
+        return redirect('/products');
     }
 
     /**
@@ -107,6 +126,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         Product::destroy($product->id);
-        return redirect('/product')->with('delete', 'Data berhasil dihapus!');
+        return redirect('/products')->with('delete', 'Data berhasil dihapus!');
     }
 }

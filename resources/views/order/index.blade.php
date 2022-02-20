@@ -1,5 +1,5 @@
 @extends('templates.master')
-@section('title', 'Product List')
+@section('title', 'Order List')
 
 @section('main')
 <div id="main">
@@ -13,7 +13,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Product List</h3>
+                    <h3>Order List</h3>
                     <p class="text-subtitle text-muted">For user to check they list</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
@@ -29,7 +29,7 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ url('/products/create') }}" class="btn btn-primary rounded-pill">Add Product</a>
+                    <a href="{{ url('/order/create') }}" class="btn btn-primary rounded-pill">Add Order</a>
                 </div>
                 <div class="card-body">
                     @if(session('create')) 
@@ -46,19 +46,21 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Name</th>
-                                <th>Price</th>
+                                <th>Invoice</th>
+                                <th>Customer Name</th>
+                                <th>Total</th>
+                                <th>Order Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($product as $product)
+                            @foreach ($order as $order)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->price }}</td>
+                                <td>{{ $order->name }}</td>
+                                <td>{{ $order->price }}</td>
                                 <td>
-                                    <a href="{{ url('/products/' .$product->id.'/edit') }}" class="btn btn-warning rounded-pill">edit</a>
-                                    <form action="{{ url('/products/' .$product->id) }}" method="POST" class="d-inline">
+                                    <a href="{{ url('/order/' .$order->id.'/edit') }}" class="btn btn-warning rounded-pill">edit</a>
+                                    <form action="{{ url('/order/' .$order->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger rounded-pill" onclick="return confirm('Apakah anda yakin?')">delete</button>

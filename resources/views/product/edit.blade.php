@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form form-horizontal" action="{{ url('/product/'.$product->id) }}" method="POST">
+                                        <form class="form form-horizontal" action="{{ url('/products/'.$product->id) }}" method="POST">
                                             @csrf
                                             @method('patch')
                                             <div class="form-body">
@@ -84,6 +84,31 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Photos</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input class="form-control @error('photos') is-invalid @enderror" type="file" id="photos" name="photos[]">
+                                                @error('photos')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                                <input class="form-control @error('photos') is-invalid @enderror" type="file" id="photos" name="photos[]">
+                                                @error('photos')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                                <input class="form-control @error('photos') is-invalid @enderror" type="file" id="photos" name="photos[]">
+                                                @error('photos')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                        </div>
                                                 <div class="row">
                                                     <div class="col-12 d-flex justify-content-end">
                                                         <button type="submit"
