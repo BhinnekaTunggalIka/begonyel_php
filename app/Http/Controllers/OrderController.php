@@ -36,24 +36,28 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $request -> validate([
+        // return $request;
+        $request->validate(
+            [
                 'invoice' => 'required|min:5',
                 'customer_name' => 'required|min:3',
                 'total' => 'required|min:1',
                 'status_order' => 'required',
-        ],
-        [
+            ],
+            [
                 'invoice' => 'Jangan lupa masukin nomor invoice nya yaa..',
                 'customer_name' => 'Jangan lupa masukin nama customer nya yaa..',
                 'total' => 'masukin total..',
                 'status_order' => 'statusnya gimana?',
-        ]);
-        $order = Order :: create([
+            ]
+        );
+        $order = Order::create([
             'invoice' => $request->invoice,
             'customer_name' => $request->customer_name,
             'total' => $request->total,
             'status_order' => $request->status_order
         ]);
+        return redirect('/order')->with('status', 'Data Berhasil Ditambahkan!');
     }
 
     /**

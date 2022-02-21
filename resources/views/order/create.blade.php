@@ -106,7 +106,7 @@
                                                 <label>Total</label>
                                             </div>
                                             <div class="form-group col-md-8">
-                                                <select class="choices form-select">
+                                                <select class="choices form-select @error('status_order') is-invalid @enderror" placeholder="Order Status" name="status_order" value="{{ old('status_order') }}">
                                                     <option value="accepted">Accepted</option>
                                                     <option value="processed">Processed</option>
                                                     <option value="finished">Finished</option>

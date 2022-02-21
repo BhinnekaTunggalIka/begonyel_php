@@ -39,28 +39,31 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // return $request;
-        $request -> validate([
-            'name' => 'required|min:4',
-            'price' => 'required|min:1',
-            'photos' => 'required',
-            'photos.*' => 'image|mimes:jpeg,png,jpg,gif,svg,heic|max:2048'
-        ],
-        [
-            'name.required' => 'Jangan lupa isi nama...',
-            'name.min' => 'Nama makanan minimal 4 huruf...',
-            'price.required' => 'Isi harga nya yaa..',
-            'photos.required' => 'masukin foto nya dong..',
-            'photos.image' => 'masukin foto bukan yang lain..',
-            'photos.mimes' => 'masukin foto bukan yang lain..',
-            'photos.max' => 'maksimal ukuran file 2MB..'
-        ]);
-        $product = Product :: create([
+        $request->validate(
+            [
+                'name' => 'required|min:4',
+                'price' => 'required|min:1',
+                'photos' => 'required',
+                'photos.*' => 'image|mimes:jpeg,png,jpg,gif,svg,heic|max:2048'
+            ],
+            [
+                'name.required' => 'Jangan lupa isi nama...',
+                'name.min' => 'Nama makanan minimal 4 huruf...',
+                'price.required' => 'Isi harga nya yaa..',
+                'photos.required' => 'masukin foto nya dong..',
+                'photos.image' => 'masukin foto bukan yang lain..',
+                'photos.mimes' => 'masukin foto bukan yang lain..',
+                'photos.max' => 'maksimal ukuran file 2MB..'
+            ]
+        );
+        $product = Product::create([
             'name' => $request->name,
-            'price' => $request->price
+            'price' => $request->price,
+            'photos'  => $request->photos
         ]);
 
-        foreach($request->file('photos') as $photo){
-            $filename = date('YmdHis').'_product'.$photo->getClientOriginalName();
+        foreach ($request->file('photos') as $photo) {
+            $filename = date('YmdHis') . '_product' . $photo->getClientOriginalName();
             $photo->move(public_path('product'), $filename);
             Photo::create([
                 'photo_name' => $filename,
@@ -102,17 +105,27 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $request -> validate([
-            'name' => 'required|min:4',
-            'price' => 'required|min:1'
-        ],
-        [
-            'name.required' => 'Jangan lupa isi nama...',
-            'name.min' => 'Nama makanan minimal 4 huruf...'
-        ]);
-        Product::where('id',$product->id)->update([
+        $request->validate(
+            [
+                'name' => 'required|min:4',
+                'price' => 'required|min:1',
+                'photos' => 'required',
+                'photos.*' => 'image|mimes:jpeg,png,jpg,gif,svg,heic|max:2048'
+            ],
+            [
+                'name.required' => 'Jangan lupa isi nama...',
+                'name.min' => 'Nama makanan minimal 4 huruf...',
+                'price.required' => 'Isi harga nya yaa..',
+                'photos.required' => 'masukin foto nya dong..',
+                'photos.image' => 'masukin foto bukan yang lain..',
+                'photos.mimes' => 'masukin foto bukan yang lain..',
+                'photos.max' => 'maksimal ukuran file 2MB..'
+            ]
+        );
+        Product::where('id', $product->id)->update([
             'name' => $request->name,
             'price' => $request->price,
+            'photos' => $request->photo
         ]);
         return redirect('/products');
     }
