@@ -88,6 +88,7 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <input class="form-control @error('photos') is-invalid @enderror" type="file" id="photos" name="photos[]">
+                                                <small>{{ }}</small>
                                                 @error('photos')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}

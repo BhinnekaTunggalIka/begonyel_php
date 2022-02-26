@@ -59,7 +59,7 @@ class ProductController extends Controller
         $product = Product::create([
             'name' => $request->name,
             'price' => $request->price,
-            'photos'  => $request->photos
+            'photos'  => $request->photos //mungkin ini dak perlu
         ]);
 
         foreach ($request->file('photos') as $photo) {
@@ -125,7 +125,7 @@ class ProductController extends Controller
         Product::where('id', $product->id)->update([
             'name' => $request->name,
             'price' => $request->price,
-            'photos' => $request->photo
+            'photos' => $request->photo //mungkin ini dak perlu
         ]);
         return redirect('/products');
     }
