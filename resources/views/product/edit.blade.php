@@ -86,27 +86,21 @@
                                             <div class="col-md-4">
                                                 <label>Photos</label>
                                             </div>
+
+                                            @foreach($product->photo as $item)
                                             <div class="col-md-8">
                                                 <input class="form-control @error('photos') is-invalid @enderror" type="file" id="photos" name="photos[]">
-                                                <small>{{ }}</small>
-                                                @error('photos')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                                <input class="form-control @error('photos') is-invalid @enderror" type="file" id="photos" name="photos[]">
-                                                @error('photos')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                                <input class="form-control @error('photos') is-invalid @enderror" type="file" id="photos" name="photos[]">
+                                                <small>{{ $item->photo_name }}</small>
                                                 @error('photos')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
                                             </div>
+                                            <div class="col-md-4">
+                                                <!-- bertujuan to make choose file sejajar -->
+                                            </div>
+                                            @endforeach
                                         </div>
                                         <div class="row">
                                             <div class="col-12 d-flex justify-content-end">

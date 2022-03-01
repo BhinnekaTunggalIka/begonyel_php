@@ -59,7 +59,6 @@ class ProductController extends Controller
         $product = Product::create([
             'name' => $request->name,
             'price' => $request->price,
-            'photos'  => $request->photos //mungkin ini dak perlu
         ]);
 
         foreach ($request->file('photos') as $photo) {
@@ -93,6 +92,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        // return $product->photo;
         return view('product.edit', compact('product'));
     }
 
@@ -122,12 +122,29 @@ class ProductController extends Controller
                 'photos.max' => 'maksimal ukuran file 2MB..'
             ]
         );
-        Product::where('id', $product->id)->update([
-            'name' => $request->name,
-            'price' => $request->price,
-            'photos' => $request->photo //mungkin ini dak perlu
-        ]);
-        return redirect('/products');
+
+        if ($request->hasFile('photos')) {
+            foreach ($request->file('photos') as $photo) {
+                $filename = date('YmdHis') . '_product' . $photo->getClientOriginalName();
+                if (file_exists(public_path('product/' . $product->photo))) {
+                    unlink(public_path('product/' . $product->photo));
+                }
+                $photo->move(public_path('product'), $filename);
+                Photo::where('id', $product->photo->id)->update([
+                    'photo_name' => $filename,
+                    'product_id' => $product->id
+                ]);
+            }
+        }
+
+
+
+        // Product::where('id', $product->id)->update([
+        //     'name' => $request->name,
+        //     'price' => $request->price,
+        //     'photos' => $request->photo //mungkin ini dak perlu
+        // ]);
+        return redirect('/products')->with('status', 'data berhasil ditambahkan!');
     }
 
     /**

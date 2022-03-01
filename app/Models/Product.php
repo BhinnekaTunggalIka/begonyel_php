@@ -13,6 +13,6 @@ class Product extends Model
 
     public function photo() //this line below dibuat
     {
-        return $this->hasMany(PhotoModel::class); //karena satu product bisa punya more than one photo
+        return $this->hasMany(Photo::class); //karena satu product bisa punya more than one photos
     }
 }

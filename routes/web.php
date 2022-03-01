@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PhotoController;
@@ -20,6 +21,12 @@ use App\Http\Controllers\OrderController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'storelogin']);
+Route::get('/signup', [AuthController::class, 'signup']);
+Route::post('/signup', [AuthController::class, 'storeSignup']);
+
 Route::resource('/products', ProductController::class);
 Route::resource('/photo', PhotoController::class);
 Route::resource('/table', TableController::class);
