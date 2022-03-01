@@ -32,11 +32,21 @@
                     <a href="{{ url('/products/create') }}" class="btn btn-primary rounded-pill">Add Product</a>
                 </div>
                 <div class="card-body">
-                    @if(session('create')) 
+                    @if(session('status'))
                     <div class="row">
                         <div class="col-6">
                             <div class="alert alert-success alert-dismissible show fade">
-                                {{ session('create') }}
+                                {{ session('status') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                    @if(session('delete'))
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="alert alert-success alert-dismissible show fade">
+                                {{ session('delete') }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         </div>

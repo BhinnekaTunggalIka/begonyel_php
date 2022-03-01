@@ -144,7 +144,7 @@ class ProductController extends Controller
         //     'price' => $request->price,
         //     'photos' => $request->photo //mungkin ini dak perlu
         // ]);
-        return redirect('/products')->with('status', 'data berhasil ditambahkan!');
+        return redirect('/products')->with('status', 'Data berhasil ditambahkan!');
     }
 
     /**
