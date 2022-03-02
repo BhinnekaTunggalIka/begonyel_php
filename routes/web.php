@@ -18,16 +18,19 @@ use App\Http\Controllers\OrderController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/login', [AuthController::class, 'login']);
+Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'storelogin']);
-Route::get('/signup', [AuthController::class, 'signup']);
+Route::get('/signup', [AuthController::class, 'signup'])->name('signup');
 Route::post('/signup', [AuthController::class, 'storeSignup']);
 
-Route::resource('/products', ProductController::class);
-Route::resource('/photo', PhotoController::class);
-Route::resource('/table', TableController::class);
-Route::resource('/order', OrderController::class);
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    Route::resource('/products', ProductController::class);
+    Route::resource('/photo', PhotoController::class);
+    Route::resource('/table', TableController::class);
+    Route::resource('/order', OrderController::class);
+    Route::get('/logout', [AuthController::class, 'logout']);
+});
