@@ -57,7 +57,7 @@ class OrderController extends Controller
             'total' => $request->total,
             'status_order' => $request->status_order
         ]);
-        return redirect('/order')->with('status', 'Data Berhasil Ditambahkan!');
+        return redirect('/master-data/order')->with('status', 'Data Berhasil Ditambahkan!');
     }
 
     /**
@@ -79,7 +79,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        return view('order/edit', compact('order'));
     }
 
     /**
@@ -91,7 +91,28 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        // return $request;
+        $request->validate(
+            [
+                'invoice' => 'required|min:5',
+                'customer_name' => 'required|min:3',
+                'total' => 'required|min:1',
+                'status_order' => 'required',
+            ],
+            [
+                'invoice' => 'Jangan lupa masukin nomor invoice nya yaa..',
+                'customer_name' => 'Jangan lupa masukin nama customer nya yaa..',
+                'total' => 'masukin total..',
+                'status_order' => 'statusnya gimana?',
+            ]
+        );
+        Order::where('id', $order->id)->update([
+            'invoice' => $request->invoice,
+            'customer_name' => $request->customer_name,
+            'total' => $request->total,
+            'status_order' => $request->status_order
+        ]);
+        return redirect('/master-data/order')->with('status', 'Data Berhasil Ditambahkan!');
     }
 
     /**
@@ -102,6 +123,7 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        Order::destroy($order->id);
+        return redirect('/master-data/order')->with('delete', 'data berhasil dihapus');
     }
 }

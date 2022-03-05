@@ -16,6 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+
         $product = Product::all();
         return view('product.index', compact('product'));
     }
@@ -70,7 +71,7 @@ class ProductController extends Controller
             ]);
         }
 
-        return redirect('/products')->with('status', 'Data Berhasil Ditambahkan!');
+        return redirect('/master-data/products')->with('status', 'Data Berhasil Ditambahkan!');
     }
 
     /**
@@ -144,7 +145,7 @@ class ProductController extends Controller
         //     'price' => $request->price,
         //     'photos' => $request->photo //mungkin ini dak perlu
         // ]);
-        return redirect('/products')->with('status', 'Data berhasil ditambahkan!');
+        return redirect('/master-data/products')->with('status', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -156,6 +157,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         Product::destroy($product->id);
-        return redirect('/products')->with('delete', 'Data berhasil dihapus!');
+        return redirect('/master-data/products')->with('delete', 'Data berhasil dihapus!');
     }
 }

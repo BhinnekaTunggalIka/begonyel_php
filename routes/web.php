@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\OrderController;
+use Illuminate\Routing\Route as RoutingRoute;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +29,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
         return view('welcome');
     });
-    Route::resource('/products', ProductController::class);
-    Route::resource('/photo', PhotoController::class);
-    Route::resource('/table', TableController::class);
-    Route::resource('/order', OrderController::class);
-    Route::get('/logout', [AuthController::class, 'logout']);
+
+    Route::prefix('master-data')->group(function () {
+        Route::resource('/products', ProductController::class);
+        Route::resource('/photo', PhotoController::class);
+        Route::resource('/table', TableController::class);
+        Route::resource('/order', OrderController::class);
+        Route::get('/logout', [AuthController::class, 'logout']);
+    });
 });

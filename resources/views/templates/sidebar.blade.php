@@ -14,11 +14,35 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item active ">
+                <li class="sidebar-item">
                     <a href="index.html" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
+                </li>
+
+                <li class="sidebar-item @if(Request::segment(1) == 'master-data') active @endif has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-stack"></i>
+                        <span>Master Data</span>
+                    </a>
+                    <ul class="submenu @if(Request::segment(1) == 'products') active @endif">
+                        <li class="submenu-item @if(Request::segment(2) == 'products') active @endif">
+                            <a href="{{ url ('/master-data/products/')}}">Product Data</a>
+                        </li>
+                        <li class="submenu-item @if(Request::segment(2) == 'order') active @endif">
+                            <a href="{{ url ('/master-data/order/')}}">Order Data</a>
+                        </li>
+                        <li class="submenu-item @if(Request::segment(2) == 'table') active @endif">
+                            <a href="{{ url ('/master-data/table/')}}">Table Data</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="..">Cart Data</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="..">Photos Data</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="sidebar-item">

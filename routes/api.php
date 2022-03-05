@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartControllerApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductControllerApi;
@@ -20,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/products', [ProductControllerApi::class, 'index']);
+
+Route::post('/cart', [CartControllerApi::class, 'store']);

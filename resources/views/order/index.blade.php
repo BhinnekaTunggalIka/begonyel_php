@@ -29,7 +29,7 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ url('/order/create') }}" class="btn btn-primary rounded-pill">Add Order</a>
+                    <a href="{{ url('/master-data/order/create') }}" class="btn btn-primary rounded-pill">Add Order</a>
                 </div>
                 <div class="card-body">
                     @if(session('status'))
@@ -65,12 +65,14 @@
                         <tbody>
                             @foreach ($order as $order)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $order->name }}</td>
-                                <td>{{ $order->price }}</td>
+                                <td>{{ $loop->iteration}}</td>
+                                <td>{{ $order->invoice}}</td>
+                                <td>{{ $order->customer_name}}</td>
+                                <td>{{ $order->total}}</td>
+                                <td>{{ $order->status_order}}</td>
                                 <td>
-                                    <a href="{{ url('/order/' .$order->id.'/edit') }}" class="btn btn-warning rounded-pill">edit</a>
-                                    <form action="{{ url('/order/' .$order->id) }}" method="POST" class="d-inline">
+                                    <a href="{{ url('/master-data/order/' .$order->id.'/edit') }}" class="btn btn-warning rounded-pill">edit</a>
+                                    <form action="{{ url('/master-data/order/' .$order->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger rounded-pill" onclick="return confirm('Apakah anda yakin?')">delete</button>

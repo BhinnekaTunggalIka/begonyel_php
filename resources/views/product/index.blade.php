@@ -29,7 +29,7 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ url('/products/create') }}" class="btn btn-primary rounded-pill">Add Product</a>
+                    <a href="{{ url('/master-data/products/create') }}" class="btn btn-primary rounded-pill">Add Product</a>
                 </div>
                 <div class="card-body">
                     @if(session('status'))
@@ -67,8 +67,8 @@
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->price }}</td>
                                 <td>
-                                    <a href="{{ url('/products/' .$product->id.'/edit') }}" class="btn btn-warning rounded-pill">edit</a>
-                                    <form action="{{ url('/products/' .$product->id) }}" method="POST" class="d-inline">
+                                    <a href="{{ url('/master-data/products/' .$product->id.'/edit') }}" class="btn btn-warning rounded-pill">edit</a>
+                                    <form action="{{ url('/master-data/products/' .$product->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger rounded-pill" onclick="return confirm('Apakah anda yakin?')">delete</button>
