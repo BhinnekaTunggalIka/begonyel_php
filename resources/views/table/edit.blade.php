@@ -13,7 +13,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Edit Table</h3>
+                    <h3>Form Layout</h3>
                     <p class="text-subtitle text-muted">Multiple form layout you can use</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
@@ -38,7 +38,7 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal" action="{{ url('/table/'.$table->id) }}" method="POST">
+                                <form class="form form-horizontal" action="{{ url('/master-data/table/'.$table->id) }}" method="POST">
                                     @csrf
                                     @method('patch')
                                     <div class="form-body">
@@ -66,17 +66,17 @@
                                             <div class="col-md-4">
                                                 <label>Table Status</label>
                                             </div>
-                                                <div class="form-group col-md-8">
-                                                    <select class="choices form-select" name="status_table">
-                                                        @if ($table->status_table=='available')
-                                                        <option value="available" selected>Available</option>
-                                                        <option value="occupied">Occupied</option>
-                                                        @else
-                                                        <option value="available">Available</option>
-                                                        <option value="occupied" selected>Occupied</option>
-                                                        @endif
-                                                    </select>
-                                                </div>
+                                            <div class="form-group col-md-8">
+                                                <select class="choices form-select" name="status_table">
+                                                    @if ($table->status_table=='available')
+                                                    <option value="available" selected>Available</option>
+                                                    <option value="occupied">Occupied</option>
+                                                    @else
+                                                    <option value="available">Available</option>
+                                                    <option value="occupied" selected>Occupied</option>
+                                                    @endif
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-12 d-flex justify-content-end">

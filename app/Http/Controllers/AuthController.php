@@ -47,7 +47,7 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($user)) {
-            return redirect('/products');
+            return redirect('/master-data/products');
         } else {
             return redirect('/login')->with('error', 'Username atau Password salah!');
         }

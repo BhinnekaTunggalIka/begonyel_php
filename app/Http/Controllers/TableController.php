@@ -36,15 +36,15 @@ class TableController extends Controller
      */
     public function store(Request $request)
     {
-        $request -> validate([
+        $request->validate([
             'number' => 'required',
             'status_table' => 'required'
         ]);
-        Table :: create([
+        Table::create([
             'number' => $request->number,
             'status_table' => $request->status_table
         ]);
-        return redirect('/table')->with('status', 'Data Berhasil Ditambahkan!');
+        return redirect('/master-data/table')->with('status', 'Data Berhasil Ditambahkan!');
     }
 
     /**
@@ -78,15 +78,15 @@ class TableController extends Controller
      */
     public function update(Request $request, Table $table)
     {
-        $request -> validate([
+        $request->validate([
             'number' => 'required',
             'status_table' => 'required'
         ]);
-        Table::where('id',$table->id)->update([
+        Table::where('id', $table->id)->update([
             'number' => $request->number,
             'status_table' => $request->status_table
         ]);
-        return redirect('/table');
+        return redirect('/master-data/table');
     }
 
     /**
@@ -98,6 +98,6 @@ class TableController extends Controller
     public function destroy(Table $table)
     {
         Table::destroy($table->id);
-        return redirect('/table')->with('delete', 'Data berhasil dihapus!');
+        return redirect('/master-data/table')->with('delete', 'Data berhasil dihapus!');
     }
 }

@@ -66,7 +66,7 @@
                             @foreach ($order as $order)
                             <tr>
                                 <td>{{ $loop->iteration}}</td>
-                                <td>{{ $order->invoice}}</td>
+                                <td>{{ a href $order->invoice}}</td>
                                 <td>{{ $order->customer_name}}</td>
                                 <td>{{ $order->total}}</td>
                                 <td>{{ $order->status_order}}</td>

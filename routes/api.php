@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\CartControllerApi;
+use App\Http\Controllers\CartControllerApi; //nih "yang di atas"
+use App\Http\Controllers\OrderControllerApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductControllerApi;
@@ -22,4 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/products', [ProductControllerApi::class, 'index']);
 
-Route::post('/cart', [CartControllerApi::class, 'store']);
+Route::post('/cart', [CartControllerApi::class, 'store']); //kalo udah masukin ini jangan lupa buat yang di atas
+
+Route::post('/order', [OrderControllerApi::class, 'store']);
