@@ -61,7 +61,7 @@ class OrderControllerApi extends Controller
                 ]);
             }
             Cart::truncate();
-            return response()->json('oke');
+            return response()->json('berhasil');
         } else {
             return response()->json('gagal');
         }
@@ -73,9 +73,10 @@ class OrderControllerApi extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Order $detailorder)
     {
-        //
+        // return $detailorder;
+        return view('order/detailorder', compact('detailorder'));
     }
 
     /**

@@ -47,7 +47,7 @@ class ProductControllerApi extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return response()->json($product);
     }
 
     /**

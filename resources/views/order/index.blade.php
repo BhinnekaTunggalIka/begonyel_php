@@ -66,7 +66,7 @@
                             @foreach ($order as $order)
                             <tr>
                                 <td>{{ $loop->iteration}}</td>
-                                <td>{{ a href $order->invoice}}</td>
+                                <td><a href="{{ url('/master-data/order/detailorder/' .$order->id) }}">{{ $order->invoice}}</a></td>
                                 <td>{{ $order->customer_name}}</td>
                                 <td>{{ $order->total}}</td>
                                 <td>{{ $order->status_order}}</td>

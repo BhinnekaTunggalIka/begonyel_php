@@ -23,6 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/products', [ProductControllerApi::class, 'index']);
 
+Route::get('/products/{product}', [ProductControllerApi::class, 'show']);
+
 Route::post('/cart', [CartControllerApi::class, 'store']); //kalo udah masukin ini jangan lupa buat yang di atas
 
 Route::post('/order', [OrderControllerApi::class, 'store']);

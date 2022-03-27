@@ -1,5 +1,5 @@
 @extends('templates.master')
-@section('title', 'Product Photo')
+@section('title', 'Cart List')
 
 @section('main')
 <div id="main">
@@ -13,14 +13,14 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Product Photo</h3>
+                    <h3>cart List</h3>
                     <p class="text-subtitle text-muted">For user to check they list</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">DataTable</li>
+                            <li class="breadcrumb-item active" aria-current="page">Datacart</li>
                         </ol>
                     </nav>
                 </div>
@@ -29,7 +29,7 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ url('/master-data/products/create') }}" class="btn btn-primary rounded-pill">Add Product</a>
+                    <a href="{{ url('/master-data/carts/create') }}" class="btn btn-primary rounded-pill">Add cart</a>
                 </div>
                 <div class="card-body">
                     @if(session('create'))
@@ -46,18 +46,20 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Photo Name</th>
+                                <th>Quantity</th>
+                                <th>Description</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($photo as $photos)
+                            @foreach ($cart as $cart)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $photos->photo_name }}</td>
+                                <td>{{ $cart->quantity }}</td>
+                                <td>{{ $cart->description }}</td>
                                 <td>
-                                    <a href="{{ url('/product/' .$photos->id.'/edit') }}" class="btn btn-warning rounded-pill">edit</a>
-                                    <form action="{{ url('/product/' .$photos->id) }}" method="POST" class="d-inline">
+                                    <a href="{{ url('master-data/carts/' .$cart->id.'/edit') }}" class="btn btn-warning rounded-pill">edit</a>
+                                    <form action="{{ url('master-data/carts/' .$cart->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger rounded-pill" onclick="return confirm('Apakah anda yakin?')">delete</button>

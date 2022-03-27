@@ -13,7 +13,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Form Layout</h3>
+                    <h3>Edit Product</h3>
                     <p class="text-subtitle text-muted">Multiple form layout you can use</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
@@ -87,7 +87,7 @@
                                                 <label>Photos</label>
                                             </div>
 
-                                            @foreach($product->photo as $item)
+                                            @foreach ($product->photo as $item)
                                             <div class="col-md-8">
                                                 <input class="form-control @error('photos') is-invalid @enderror" type="file" id="photos" name="photos[]">
                                                 <small>{{ $item->photo_name }}</small>
@@ -96,9 +96,6 @@
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
-                                            </div>
-                                            <div class="col-md-4">
-                                                <!-- bertujuan to make choose file sejajar -->
                                             </div>
                                             @endforeach
                                         </div>
@@ -116,7 +113,6 @@
                 </div>
             </div>
         </section>
-        <!-- // Basic Horizontal form layout section end -->
     </div>
 </div>
 @endsection

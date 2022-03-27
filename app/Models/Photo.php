@@ -12,6 +12,6 @@ class Photo extends Model
 
     public function product()
     {
-        return $this->belongsTo(Product::class); //belongsTo dipake di tabel utama yang punya relasi ke tabel dengan foreign key
+        return $this->belongsTo(Product::class, 'product_id'); //belongsTo dipake di tabel utama yang punya relasi ke tabel dengan foreign key
     }
 }

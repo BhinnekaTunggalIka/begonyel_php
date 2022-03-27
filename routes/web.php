@@ -1,11 +1,14 @@
 <?php
 
+// use App\Http\Controllers\OrderControllerApi;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartControllerApi;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderControllerApi;
 use Illuminate\Routing\Route as RoutingRoute;
 
 /*
@@ -32,9 +35,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::prefix('master-data')->group(function () {
         Route::resource('/products', ProductController::class);
-        Route::resource('/photo', PhotoController::class);
+        Route::resource('/photos', PhotoController::class);
         Route::resource('/table', TableController::class);
         Route::resource('/order', OrderController::class);
+        Route::resource('/carts', CartControllerApi::class);
         Route::get('/logout', [AuthController::class, 'logout']);
+        Route::get('/order/detailorder/{detailorder}', [OrderControllerApi::class, 'show']);
     });
 });

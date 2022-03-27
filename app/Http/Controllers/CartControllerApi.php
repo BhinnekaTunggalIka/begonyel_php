@@ -14,7 +14,8 @@ class CartControllerApi extends Controller
      */
     public function index()
     {
-        //
+        $cart = Cart::all();
+        return view('cart.index', compact('cart'));
     }
 
     /**
@@ -40,11 +41,11 @@ class CartControllerApi extends Controller
                 'product_id' => $request->product_id,
                 'quantity' => $request->quantity,
                 'description' => $request->description,
-                'table_id' => $request->table_id,
+                // 'table_id' => $request->table_id,
             ]);
-            return response()->json('oke');
+            return response()->json('berhasil');
         } else {
-            return response()->json('kamu?');
+            return response()->json('gagal');
         }
     }
 
